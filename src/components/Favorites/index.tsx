@@ -16,8 +16,6 @@ const Favorites: React.FC = () => {
   const navigation = useNavigation();
   const { favoriteStore } = useStore();
 
-  console.tron.log("favoritos:", favoriteStore.favorites);
-
   return (
     <Observer>
       {() => (

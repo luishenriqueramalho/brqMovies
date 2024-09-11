@@ -1,7 +1,13 @@
 import React from "react";
 import { Circle, ClipPath, Defs, G, Path, Rect, Svg } from "react-native-svg";
 
-export const PointMenuIcon = ({ isMenuVisible }) => (
+interface PointMenuIconProps {
+  isMenuVisible: boolean;
+}
+
+export const PointMenuIcon: React.FC<PointMenuIconProps> = ({
+  isMenuVisible,
+}) => (
   <Svg width="24" height="24" viewBox="0 0 24 24" fill="none">
     <G clip-path="url(#clip0_9_7892)">
       <Circle

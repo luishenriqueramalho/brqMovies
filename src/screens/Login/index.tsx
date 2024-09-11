@@ -1,5 +1,4 @@
 import Input from "@/components/Input";
-import NavigationBar from "@/components/NavigationBar";
 import React, { useState } from "react";
 import {
   ClickPassword,
@@ -10,11 +9,12 @@ import {
   TitlePassword,
   ErrorText,
 } from "./styles";
-import LogoBRQ from "@/assets/imgs/splash.png";
+const LogoBRQ = require("@/assets/imgs/splash.png");
 import { Wrapper } from "@/utils/global";
 import { PasswordIcon, ProfileIcon } from "@/assets/svgs";
 import Button from "@/components/Button";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "@/navigators/types";
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -24,7 +24,7 @@ import {
 } from "react-native";
 
 const Login: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");

@@ -1,5 +1,4 @@
 import React from "react";
-import { Text } from "react-native";
 import { Click, Title } from "./styles";
 
 interface ButtonProps {
@@ -10,7 +9,12 @@ interface ButtonProps {
 
 const Button: React.FC<ButtonProps> = ({ onPress, title, disabled }) => {
   return (
-    <Click onPress={onPress} disabled={disabled}>
+    <Click
+      onPress={onPress}
+      disabled={disabled}
+      testID="enter-button"
+      accessibilityState={{ disabled }}
+    >
       <Title>{title}</Title>
     </Click>
   );
