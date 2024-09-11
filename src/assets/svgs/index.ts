@@ -8,3 +8,5 @@ export { LikeIcon } from "./LikeIcon";
 export { FavoriteIcon } from "./FavoriteIcon";
 export { CalendarIcon } from "./CalendarIcon";
 export { NotificationIcon } from "./NotificationIcon";
+export { CloseAppIcon } from "./CloseAppIcon";
+export { NoSignalIcon } from "./NoSignalIcon";

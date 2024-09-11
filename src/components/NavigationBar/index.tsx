@@ -1,19 +1,16 @@
-import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import React, { useState } from "react";
+import { Modal, SafeAreaView, Text, TouchableOpacity } from "react-native";
 import {
-  BackButtonClick,
   Container,
-  ContainerBack,
-  FavoriteButtonClick,
   Left,
+  MenuContainer,
+  MenuItem,
+  ModalMenu,
   NameBRQ,
   Right,
+  TitleMenu,
 } from "./styles";
-import {
-  BackButtonIcon,
-  FavoriteButtonIcon,
-  PointMenuIcon,
-} from "@/assets/svgs";
+import { CloseAppIcon, PointMenuIcon } from "@/assets/svgs";
 import { useNavigation } from "@react-navigation/native";
 
 interface NavigationBarProps {
@@ -21,11 +18,18 @@ interface NavigationBarProps {
   backgroundColor?: string;
 }
 
-const NavigationBar: React.FC<NavigationBarProps> = ({
-  isBack,
-  backgroundColor = "transparent",
-}) => {
+const NavigationBar: React.FC<NavigationBarProps> = ({ isBack }) => {
   const navigation = useNavigation();
+  const [isMenuVisible, setMenuVisible] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuVisible(!isMenuVisible);
+  };
+
+  const handleLogout = () => {
+    setMenuVisible(false);
+    navigation.navigate("Login");
+  };
 
   return (
     <>
@@ -35,20 +39,22 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
           <Left>
             <NameBRQ>BRQ Movies</NameBRQ>
           </Left>
-          <Right>
-            <PointMenuIcon />
+          <Right onPress={toggleMenu}>
+            <PointMenuIcon isMenuVisible={isMenuVisible} />
           </Right>
         </Container>
       )}
-      {isBack && (
-        <ContainerBack style={{ backgroundColor: backgroundColor }}>
-          <BackButtonClick onPress={() => navigation.goBack()}>
-            <BackButtonIcon />
-          </BackButtonClick>
-          <FavoriteButtonClick onPress={() => {}}>
-            <FavoriteButtonIcon />
-          </FavoriteButtonClick>
-        </ContainerBack>
+
+      {isMenuVisible && (
+        <ModalMenu visible={isMenuVisible}>
+          <TouchableOpacity style={{ flex: 1 }} onPress={toggleMenu} />
+          <MenuContainer>
+            <MenuItem onPress={handleLogout}>
+              <CloseAppIcon />
+              <TitleMenu>Sair</TitleMenu>
+            </MenuItem>
+          </MenuContainer>
+        </ModalMenu>
       )}
     </>
   );

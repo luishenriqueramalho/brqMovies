@@ -4,6 +4,7 @@ import HomeScreen from "@/screens/HomeScreen";
 import SplashScreen from "@/components/SplashScreen";
 import Login from "@/screens/Login";
 import MovieDetail from "@/screens/MovieDetail";
+import NotInternet from "@/screens/NotInternet";
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const RootStackScreen = () => {
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="MovieDetail" component={MovieDetail} />
+      <Stack.Screen name="NotInternet" component={NotInternet} />
     </Stack.Navigator>
   );
 };

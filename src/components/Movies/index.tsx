@@ -4,11 +4,13 @@ import { Scroll } from "@/utils/global";
 import { useStore } from "@/mobx";
 import { Observer } from "mobx-react-lite";
 import { useNavigation } from "@react-navigation/native";
+import NetInfo from "@react-native-community/netinfo";
 
 const Movies: React.FC = () => {
   const navigation = useNavigation();
   const { moviesStore } = useStore();
   const [isMovies, setIsMovies] = useState([]);
+  const [isConnected, setIsConnected] = useState(true);
 
   const fetchData = async () => {
     try {
@@ -20,8 +22,22 @@ const Movies: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchData();
-  }, [moviesStore]);
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      setIsConnected(state.isConnected);
+    });
+
+    if (isConnected) {
+      fetchData();
+    }
+
+    return () => {
+      unsubscribe();
+    };
+  }, [moviesStore, isConnected]);
+
+  if (!isConnected) {
+    navigation.navigate("NotInternet");
+  }
 
   return (
     <Observer>

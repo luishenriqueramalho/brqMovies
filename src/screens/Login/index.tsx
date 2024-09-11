@@ -64,7 +64,7 @@ const Login: React.FC = () => {
                 />
               </SepareInput>
               <SepareButton>
-                <Button onPress={() => onContinuePress()} />
+                <Button title="Entrar" onPress={() => onContinuePress()} />
               </SepareButton>
               <ClickPassword>
                 <TitlePassword>Esqueci a Senha</TitlePassword>
