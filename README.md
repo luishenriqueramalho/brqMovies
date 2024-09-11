@@ -91,7 +91,7 @@ yarn install
 
 ### 3. Configure a chave da API The Movie DB:
 
-# Crie um arquivo .env na raiz do projeto e adicione sua chave da API:
+# Crie um arquivo .env na raiz do projeto ou altere o env.exemple e adicione sua chave da API:
 
 ```bash
 API_KEY=YOUR_API_KEY_HERE
