@@ -39,7 +39,7 @@ BRQMovies é um aplicativo de visualização de filmes que permite aos usuários
 - **TypeScript** - para garantir tipagem estática e melhor manutenção do código.
 - **Styled Components** - para estilização dos componentes React Native.
 - **React Navigation** - para navegação entre telas.
-- **Axios** - para requisições HTTP à API do The Movie DB.
+- **Superagent** - para requisições HTTP à API do The Movie DB.
 - **The Movie DB API** - para fornecer dados sobre filmes.
 - **Jest** e **React Native Testing Library** - para testes unitários.
 
@@ -79,7 +79,7 @@ Siga os passos abaixo para configurar o projeto em sua máquina local:
 ### 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/brqmovies.git
+git clone https://github.com/luishenriqueramalho/brqmovies.git
 cd brqmovies
 ```
 
@@ -94,7 +94,7 @@ yarn install
 # Crie um arquivo .env na raiz do projeto e adicione sua chave da API:
 
 ```bash
-TMDB_API_KEY=YOUR_API_KEY_HERE
+API_KEY=YOUR_API_KEY_HERE
 ```
 
 ### 4. Inicie o projeto com Expo:
