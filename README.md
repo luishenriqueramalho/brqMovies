@@ -44,6 +44,7 @@ BRQMovies é um aplicativo de visualização de filmes que permite aos usuários
 - **Styled Components** - para estilização dos componentes React Native.
 - **React Navigation** - para navegação entre telas.
 - **Superagent** - para requisições HTTP à API do The Movie DB.
+- **Mobx** - para gerenciamento de estados.
 - **The Movie DB API** - para fornecer dados sobre filmes.
 - **Jest** e **React Native Testing Library** - para testes unitários.
 
@@ -106,3 +107,7 @@ API_KEY=YOUR_API_KEY_HERE
 ```bash
 yarn start --reset-cache
 ```
+
+### 5. Download do APK:
+
+- [APK Android]([https://developers.themoviedb.org/3](https://expo.dev/accounts/luishenriqueramalho/projects/brqMovies/builds/d477fcba-6084-4410-9977-19a55a0ac391))
