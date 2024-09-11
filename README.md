@@ -64,13 +64,13 @@ yarn test
 
 ## 📋 Funcionalidades
 
-**Login:** Permite aos usuários fazer login com validação de credenciais.
-**Home:** Exibe os filmes mais populares do momento.
-**Favoritos:** Lista de filmes favoritos do usuário.
-**Detalhes do Filme:** Exibe detalhes como sinopse, elenco, e trailer de um filme específico.
-**Navegação por Menu:** Permite ao usuário navegar entre as telas Home, Favoritos e Detalhes.
-**Favoritos Vazio:** Exibe uma mensagem quando a lista de favoritos está vazia.
-**Erro de Login:** Mostra uma mensagem de erro se as credenciais de login estiverem incorretas.
+- **Login:** Permite aos usuários fazer login com validação de credenciais.
+- **Home:** Exibe os filmes mais populares do momento.
+- **Favoritos:** Lista de filmes favoritos do usuário.
+- **Detalhes do Filme:** Exibe detalhes como sinopse, elenco, e trailer de um filme específico.
+- **Navegação por Menu:** Permite ao usuário navegar entre as telas Home, Favoritos e Detalhes.
+- **Favoritos Vazio:** Exibe uma mensagem quando a lista de favoritos está vazia.
+- **Erro de Login:** Mostra uma mensagem de erro se as credenciais de login estiverem incorretas.
 
 ```
 
