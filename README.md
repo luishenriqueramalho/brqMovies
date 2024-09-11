@@ -110,4 +110,4 @@ yarn start --reset-cache
 
 ### 5. Download do APK:
 
-- [APK Android]([https://developers.themoviedb.org/3](https://expo.dev/accounts/luishenriqueramalho/projects/brqMovies/builds/d477fcba-6084-4410-9977-19a55a0ac391))
+- [APK Android](https://expo.dev/accounts/luishenriqueramalho/projects/brqMovies/builds/d477fcba-6084-4410-9977-19a55a0ac391)
