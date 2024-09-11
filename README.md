@@ -6,7 +6,7 @@ BRQMovies é um aplicativo de visualização de filmes que permite aos usuários
 
 ### 1. Tela de Login
 
-<img src="path_to_image/tela-login.png" width="250"/>
+<img src="assets/prints/login.jpeg" width="250"/>
 
 ### 2. Tela de Login com erro
 
