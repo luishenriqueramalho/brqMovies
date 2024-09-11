@@ -10,3 +10,5 @@ export { CalendarIcon } from "./CalendarIcon";
 export { NotificationIcon } from "./NotificationIcon";
 export { CloseAppIcon } from "./CloseAppIcon";
 export { NoSignalIcon } from "./NoSignalIcon";
+export { EyesHiddenIcon } from "./EyesHiddenIcon";
+export { EyesVisibleIcon } from "./EyesVisibleIcon";

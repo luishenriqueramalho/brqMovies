@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Center, Container, ContentInput, Left, Right } from "./styles";
-import { ErrorIcon } from "@/assets/svgs";
+import { EyesHiddenIcon, EyesVisibleIcon } from "@/assets/svgs";
 import { Colors } from "@/utils/colors";
-import { KeyboardTypeOptions } from "react-native";
+import { KeyboardTypeOptions, TouchableOpacity } from "react-native";
 
 interface InputProps {
   placeholder?: string;
@@ -19,6 +19,12 @@ const Input: React.FC<InputProps> = ({
   secureTextEntry = false,
   keyboardType = "default",
 }) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState(!secureTextEntry);
+
+  const togglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
+
   return (
     <Container>
       <Left>{icon}</Left>
@@ -27,12 +33,16 @@ const Input: React.FC<InputProps> = ({
           placeholder={placeholder}
           placeholderTextColor={Colors.txtInput}
           onChangeText={onChangeText}
-          secureTextEntry={secureTextEntry}
+          secureTextEntry={!isPasswordVisible}
           keyboardType={keyboardType}
         />
       </Center>
       <Right>
-        <ErrorIcon />
+        {secureTextEntry && (
+          <TouchableOpacity onPress={togglePasswordVisibility}>
+            {isPasswordVisible ? <EyesHiddenIcon /> : <EyesVisibleIcon />}
+          </TouchableOpacity>
+        )}
       </Right>
     </Container>
   );

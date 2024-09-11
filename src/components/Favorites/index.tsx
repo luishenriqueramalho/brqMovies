@@ -15,6 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 const Favorites: React.FC = () => {
   const navigation = useNavigation();
   const { favoriteStore } = useStore();
+  const URL_IMG = process.env.URL_IMG;
 
   return (
     <Observer>
@@ -32,7 +33,7 @@ const Favorites: React.FC = () => {
                   >
                     <PhotoMovie
                       source={{
-                        uri: `https://image.tmdb.org/t/p/w185${place.poster_path}`,
+                        uri: `${URL_IMG}${place.poster_path}`,
                       }}
                     />
                   </MovieDetail>
