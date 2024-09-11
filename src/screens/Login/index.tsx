@@ -1,6 +1,6 @@
 import Input from "@/components/Input";
 import NavigationBar from "@/components/NavigationBar";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   ClickPassword,
   Header,
@@ -8,6 +8,7 @@ import {
   SepareButton,
   SepareInput,
   TitlePassword,
+  ErrorText,
 } from "./styles";
 import LogoBRQ from "@/assets/imgs/splash.png";
 import { Wrapper } from "@/utils/global";
@@ -15,7 +16,6 @@ import { PasswordIcon, ProfileIcon } from "@/assets/svgs";
 import Button from "@/components/Button";
 import { useNavigation } from "@react-navigation/native";
 import {
-  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -27,18 +27,21 @@ const Login: React.FC = () => {
   const navigation = useNavigation();
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const onContinuePress = () => {
-    if (user !== "user" && password !== "123") {
+    if (user === "user" && password === "123") {
+      setError("");
       navigation.navigate("HomeScreen");
     } else {
-      Alert.alert("Usuário ou senha incorretos!");
+      setError("Usuário ou senha incorretos!");
     }
   };
 
+  const isButtonDisabled = user.trim() === "" || password.trim() === "";
+
   return (
     <>
-      <NavigationBar />
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -63,8 +66,15 @@ const Login: React.FC = () => {
                   keyboardType="numeric"
                 />
               </SepareInput>
+
+              {error ? <ErrorText>{error}</ErrorText> : null}
+
               <SepareButton>
-                <Button title="Entrar" onPress={() => onContinuePress()} />
+                <Button
+                  title="Entrar"
+                  onPress={() => onContinuePress()}
+                  disabled={isButtonDisabled}
+                />
               </SepareButton>
               <ClickPassword>
                 <TitlePassword>Esqueci a Senha</TitlePassword>

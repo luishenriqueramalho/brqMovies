@@ -5,6 +5,7 @@ import styled from "styled-components/native";
 export const Header = styled.View`
   align-items: center;
   justify-content: center;
+  margin-top: ${scale(48)}px;
   margin-bottom: ${scale(48)}px;
 `;
 
@@ -30,5 +31,12 @@ export const TitlePassword = styled.Text`
   color: ${Colors.white};
   line-height: ${scale(20)}px;
   margin-top: ${scale(34)}px;
+  text-align: center;
+`;
+
+export const ErrorText = styled.Text`
+  color: ${Colors.red};
+  font-size: ${scale(14)}px;
+  margin-top: ${scale(10)}px;
   text-align: center;
 `;
