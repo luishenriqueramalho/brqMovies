@@ -9,7 +9,7 @@ import {
   TitlePassword,
   ErrorText,
 } from "./styles";
-const LogoBRQ = require("@/assets/imgs/splash.png");
+import LogoBRQ from "@/assets/imgs/splash.png";
 import { Wrapper } from "@/utils/global";
 import { PasswordIcon, ProfileIcon } from "@/assets/svgs";
 import Button from "@/components/Button";

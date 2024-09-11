@@ -15,7 +15,7 @@ const reactotron = Reactotron.setAsyncStorageHandler!(AsyncStorage)
       ignoreUrls: /symbolicate|socket\.io/,
     },
     editor: true,
-    errors: { veto: (stackFrame: any) => false },
+    errors: { veto: () => false },
     overlay: false,
   })
   .connect();

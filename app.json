@@ -16,10 +16,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.luishenriqueramalho.brqMovies"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a6aed070-d21b-4d70-8d31-5b1b659ccd0a"
+      }
     }
   }
 }

@@ -1,7 +1,8 @@
 import { makeObservable, observable } from "mobx";
+import FavoriteResponse from "../types/FavoritesTypes";
 
 export class FavoriteStore {
-  favorites: any[] = [];
+  favorites: FavoriteResponse[] = [];
   isLoading = false;
   isError = false;
 
@@ -13,14 +14,14 @@ export class FavoriteStore {
     });
   }
 
-  addFavorite(movie: any) {
+  addFavorite(movie: FavoriteResponse) {
     const movieExists = this.favorites.find((fav) => fav.id === movie.id);
     if (!movieExists) {
       this.favorites.push(movie);
     }
   }
 
-  isFavorite(movie: any) {
+  isFavorite(movie: FavoriteResponse) {
     return this.favorites.some((fav) => fav.id === movie.id);
   }
 }

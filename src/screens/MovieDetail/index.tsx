@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { SafeAreaView } from "react-native";
+import {
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  SafeAreaView,
+} from "react-native";
 import {
   BackButtonClick,
   Card,
@@ -33,9 +37,7 @@ const MovieDetail: React.FC = ({ route }) => {
   const movie = route.params;
   const [navbarBackground, setNavbarBackground] = useState("transparent");
 
-  const isFavorited = favoriteStore.isFavorite(movie);
-
-  const handleScroll = (event: any) => {
+  const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
     if (scrollPosition > 150) {
       setNavbarBackground("#16171B");

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, SafeAreaView, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView, TouchableOpacity } from "react-native";
 import {
   Container,
   Left,

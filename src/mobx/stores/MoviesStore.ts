@@ -1,8 +1,9 @@
 import apiCall from "@/config/apiCall";
 import { makeObservable, observable, runInAction } from "mobx";
+import MoviesResponse from "../types/MoviesTypes";
 
 export class MoviesStore {
-  movies: any = [];
+  movies: MoviesResponse[] = [];
   isLoading = false;
   isError = undefined;
 

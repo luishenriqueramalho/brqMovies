@@ -5,7 +5,6 @@ import SplashScreen from "@/components/SplashScreen";
 import Login from "@/screens/Login";
 import MovieDetail from "@/screens/MovieDetail";
 import NotInternet from "@/screens/NotInternet";
-import { RootStackParamList } from "./types";
 
 const Stack = createNativeStackNavigator();
 

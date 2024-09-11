@@ -1,5 +1,3 @@
-import { NavigatorScreenParams } from "@react-navigation/native";
-
 export type RootStackParamList = {
   SplashScreen: undefined;
   Login: undefined;
@@ -9,7 +7,5 @@ export type RootStackParamList = {
 };
 
 declare global {
-  namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
-  }
+  export type RootParamList = RootStackParamList;
 }

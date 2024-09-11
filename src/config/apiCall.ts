@@ -7,8 +7,6 @@ const API_URL = process.env.API_URL;
 // Config superagent
 const superagent = superagentPromise(_superagent, global.Promise);
 
-interface BodyResponse {}
-
 const handleError = (err: ResponseError, onAuthError: () => void) => {
   if (err?.status === 401) {
     onAuthError();
@@ -18,16 +16,16 @@ const handleError = (err: ResponseError, onAuthError: () => void) => {
   }
 };
 
-const responseBody = (res: Response) => {
-  return res.body as BodyResponse;
+const responseBody = (res: Response): unknown => {
+  return res.body;
 };
 
 const requests = {
   get: (url: string) =>
     superagent.get(`${url}`).then(responseBody).catch(handleError),
-  post: (url: string, body: any) =>
+  post: (url: string, body: unknown) =>
     superagent.post(`${url}`, body).then(responseBody).catch(handleError),
-  put: (url: string, body: any) =>
+  put: (url: string, body: unknown) =>
     superagent.put(`${url}`, body).then(responseBody).catch(handleError),
   del: (url: string) =>
     superagent.del(`${url}`).then(responseBody).catch(handleError),
