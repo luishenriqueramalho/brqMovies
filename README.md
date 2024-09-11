@@ -10,27 +10,31 @@ BRQMovies é um aplicativo de visualização de filmes que permite aos usuários
 
 ### 2. Tela de Login com erro
 
-<img src="path_to_image/tela-login-erro.png" width="250"/>
+<img src="assets/prints/login-error.jpeg" width="250"/>
 
 ### 3. Tela Home
 
-<img src="path_to_image/tela-home.png" width="250"/>
+<img src="assets/prints/home.jpeg" width="250"/>
 
 ### 4. Tela Favoritos com filmes
 
-<img src="path_to_image/tela-favoritos.png" width="250"/>
+<img src="assets/prints/favorite-movies.jpeg" width="250"/>
 
 ### 5. Tela Detalhes do Filme
 
-<img src="path_to_image/tela-detalhes-filme.png" width="250"/>
+<img src="assets/prints/movie-detail.jpeg" width="250"/>
 
 ### 6. Tela Favoritos Vazio
 
-<img src="path_to_image/tela-favoritos-vazio.png" width="250"/>
+<img src="assets/prints/favorite-clean.jpeg" width="250"/>
 
 ### 7. Tela Home com Menu Clicado
 
-<img src="path_to_image/tela-home-menu.png" width="250"/>
+<img src="assets/prints/home-menu.jpeg" width="250"/>
+
+### 8. Tela de Splash
+
+<img src="assets/prints/splash.jpeg" width="250"/>
 
 ## 🚀 Tecnologias Usadas
 
