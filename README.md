@@ -72,6 +72,33 @@ yarn test
 - **Favoritos Vazio:** Exibe uma mensagem quando a lista de favoritos está vazia.
 - **Erro de Login:** Mostra uma mensagem de erro se as credenciais de login estiverem incorretas.
 
+## ⚙️ Configuração para Iniciar o Projeto
+
+Siga os passos abaixo para configurar o projeto em sua máquina local:
+
+### 1. Clone o repositório:
+
+```bash
+git clone https://github.com/seu-usuario/brqmovies.git
+cd brqmovies
 ```
 
+### 2. Instale as dependências:
+
+```bash
+yarn install
+```
+
+### 3. Configure a chave da API The Movie DB:
+
+# Crie um arquivo .env na raiz do projeto e adicione sua chave da API:
+
+```bash
+TMDB_API_KEY=YOUR_API_KEY_HERE
+```
+
+### 4. Inicie o projeto com Expo:
+
+```bash
+yarn start --reset-cache
 ```
