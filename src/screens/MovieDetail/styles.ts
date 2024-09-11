@@ -87,3 +87,23 @@ export const NavBack = styled.View`
 export const BackButtonClick = styled.TouchableOpacity``;
 
 export const FavoriteButtonClick = styled.TouchableOpacity``;
+
+export const ModalFavorite = styled.View`
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: ${Colors.green};
+  padding-vertical: ${scale(10)}px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding-bottom: ${scale(30)}px;
+`;
+
+export const TitleAddFavorite = styled.Text`
+  font-size: ${scale(18)}px;
+  font-weight: 500;
+  line-height: ${scale(24)}px;
+  color: ${Colors.white};
+  margin-left: ${scale(8)}px;
+`;

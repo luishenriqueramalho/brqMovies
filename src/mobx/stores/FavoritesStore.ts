@@ -1,4 +1,4 @@
-import { makeObservable, observable } from "mobx";
+import { action, makeObservable, observable } from "mobx";
 import FavoriteResponse from "../types/FavoritesTypes";
 
 export class FavoriteStore {
@@ -11,6 +11,9 @@ export class FavoriteStore {
       favorites: observable,
       isLoading: observable,
       isError: observable,
+      addFavorite: action,
+      removeFavorite: action,
+      isFavorite: action,
     });
   }
 
@@ -19,6 +22,10 @@ export class FavoriteStore {
     if (!movieExists) {
       this.favorites.push(movie);
     }
+  }
+
+  removeFavorite(movie: FavoriteResponse) {
+    this.favorites = this.favorites.filter((fav) => fav.id !== movie.id);
   }
 
   isFavorite(movie: FavoriteResponse) {

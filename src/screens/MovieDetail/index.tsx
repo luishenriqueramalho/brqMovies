@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -30,12 +30,21 @@ import {
 } from "@/assets/svgs";
 import { useNavigation } from "@react-navigation/native";
 import { useStore } from "@/mobx";
+import AlertFavorite from "@/components/AlertFavorite";
 
 const MovieDetail: React.FC = ({ route }) => {
   const navigation = useNavigation();
   const { favoriteStore } = useStore();
   const movie = route.params;
   const [navbarBackground, setNavbarBackground] = useState("transparent");
+  const [favoriteMovie, setFavoriteMovie] = useState(false);
+  const [addFavoriteMovie, setAddFavoriteMovie] = useState(false);
+  const [removeFavoriteMovie, setRemoveFavoriteMovie] = useState(false);
+
+  useEffect(() => {
+    const isFavorite = favoriteStore.isFavorite(movie);
+    setFavoriteMovie(isFavorite);
+  }, [favoriteStore, movie]);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
@@ -52,8 +61,21 @@ const MovieDetail: React.FC = ({ route }) => {
   };
 
   const handleAddFavorite = () => {
-    favoriteStore.addFavorite(movie);
-    console.log("Filme adicionado aos favoritos:", movie);
+    if (favoriteMovie) {
+      favoriteStore.removeFavorite(movie);
+      setRemoveFavoriteMovie(true);
+      setTimeout(() => {
+        setRemoveFavoriteMovie(false);
+        navigation.goBack();
+      }, 2000);
+    } else {
+      favoriteStore.addFavorite(movie);
+      setAddFavoriteMovie(true);
+      setTimeout(() => {
+        setAddFavoriteMovie(false);
+      }, 2000);
+    }
+    setFavoriteMovie(!favoriteMovie);
   };
 
   return (
@@ -66,7 +88,7 @@ const MovieDetail: React.FC = ({ route }) => {
               <BackButtonIcon />
             </BackButtonClick>
             <FavoriteButtonClick onPress={handleAddFavorite}>
-              <FavoriteButtonIcon />
+              <FavoriteButtonIcon favoriteMovie={favoriteMovie} />
             </FavoriteButtonClick>
           </NavBack>
           <Scroll onScroll={handleScroll} scrollEventThrottle={16}>
@@ -111,6 +133,8 @@ const MovieDetail: React.FC = ({ route }) => {
               </Card>
             </Row>
           </Scroll>
+          {addFavoriteMovie && <AlertFavorite />}
+          {removeFavoriteMovie && <AlertFavorite isRemove />}
           <SafeAreaView />
         </>
       )}

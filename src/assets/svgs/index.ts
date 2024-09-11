@@ -12,3 +12,5 @@ export { CloseAppIcon } from "./CloseAppIcon";
 export { NoSignalIcon } from "./NoSignalIcon";
 export { EyesHiddenIcon } from "./EyesHiddenIcon";
 export { EyesVisibleIcon } from "./EyesVisibleIcon";
+export { VerifyIcon } from "./VerifyIcon";
+export { RemoveIcon } from "./RemoveIcon";
