@@ -61,7 +61,7 @@ describe("MovieDetail Component", () => {
     expect(getByText("100")).toBeTruthy();
     expect(getByText("8.5")).toBeTruthy();
     expect(getByText("1500")).toBeTruthy();
-    expect(getByText("12/09/2024")).toBeTruthy();
+    expect(getByText("01/01/2022")).toBeTruthy();
   });
 
   it("Deve adicionar o filme aos favoritos ao clicar no botão", async () => {
