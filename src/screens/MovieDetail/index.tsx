@@ -97,7 +97,10 @@ const MovieDetail: React.FC = () => {
             <BackButtonClick onPress={() => navigation.goBack()}>
               <BackButtonIcon />
             </BackButtonClick>
-            <FavoriteButtonClick onPress={handleAddFavorite}>
+            <FavoriteButtonClick
+              onPress={handleAddFavorite}
+              testID="favorite-button"
+            >
               <FavoriteButtonIcon favoriteMovie={favoriteMovie} />
             </FavoriteButtonClick>
           </NavBack>

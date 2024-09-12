@@ -2,7 +2,6 @@ import React from "react";
 import RootStackScreen from "@/navigators";
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { StoreProvider } from "@/mobx";
-import "mobx-react-lite/batchingForReactNative";
 
 if (__DEV__) {
   import("./src/config/ReactotronConfig").then(() =>
