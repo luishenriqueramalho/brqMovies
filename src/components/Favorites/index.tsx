@@ -29,7 +29,7 @@ const Favorites: React.FC = () => {
                   <MovieDetail
                     key={index}
                     onPress={() =>
-                      navigation.navigate("MovieDetail", { ...place })
+                      navigation.navigate("MovieDetail", { place })
                     }
                   >
                     <PhotoMovie

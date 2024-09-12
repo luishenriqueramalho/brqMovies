@@ -28,14 +28,19 @@ const Login: React.FC = () => {
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
 
   const onContinuePress = () => {
-    if (user === "user" && password === "123") {
-      setError("");
-      navigation.navigate("HomeScreen");
-    } else {
-      setError("Usuário ou senha incorretos!");
-    }
+    setLoading(true);
+    setTimeout(() => {
+      if (user === "user" && password === "123") {
+        setError("");
+        navigation.navigate("HomeScreen");
+      } else {
+        setError("Usuário ou senha incorretos!");
+      }
+      setLoading(false);
+    }, 1000);
   };
 
   const isButtonDisabled = user.trim() === "" || password.trim() === "";
@@ -56,6 +61,7 @@ const Login: React.FC = () => {
                 placeholder="Usuário"
                 icon={<ProfileIcon />}
                 onChangeText={(user: string) => setUser(user)}
+                testID="input-user"
               />
               <SepareInput>
                 <Input
@@ -64,6 +70,7 @@ const Login: React.FC = () => {
                   onChangeText={(pass: string) => setPassword(pass)}
                   secureTextEntry
                   keyboardType="numeric"
+                  testID="input-password"
                 />
               </SepareInput>
 
@@ -71,9 +78,9 @@ const Login: React.FC = () => {
 
               <SepareButton>
                 <Button
-                  title="Entrar"
+                  title={loading ? "Entrando..." : "Entrar"}
                   onPress={() => onContinuePress()}
-                  disabled={isButtonDisabled}
+                  disabled={isButtonDisabled || loading}
                 />
               </SepareButton>
               <ClickPassword>

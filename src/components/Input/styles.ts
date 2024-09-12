@@ -18,6 +18,8 @@ export const Left = styled.View`
 export const Center = styled.View`
   width: 70%;
   justify-content: center;
+  position: relative;
+  margin-top: ${scale(15)}px;
 `;
 
 export const Right = styled.View`

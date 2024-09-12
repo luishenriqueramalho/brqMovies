@@ -1,8 +1,9 @@
 import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react-native";
+import { render, fireEvent, waitFor, act } from "@testing-library/react-native";
 import Login from "@/screens/Login";
 import { NavigationContainer } from "@react-navigation/native";
 
+// Mock do navigation
 jest.mock("@react-navigation/native", () => ({
   ...jest.requireActual("@react-navigation/native"),
   useNavigation: () => ({
@@ -11,56 +12,95 @@ jest.mock("@react-navigation/native", () => ({
 }));
 
 describe("Login Screen", () => {
-  it('deve desabilitar o botão "Entrar" quando os campos estão vazios', () => {
+  beforeEach(() => {
+    jest.useFakeTimers();
+  });
+
+  it('Deve desabilitar o botão "Entrar" quando os campos estão vazios', () => {
     const { getByTestId } = render(
       <NavigationContainer>
         <Login />
       </NavigationContainer>
     );
 
-    // Usa o testID para encontrar o botão diretamente
     const enterButton = getByTestId("enter-button");
-
-    // Verifica o estado de acessibilidade "disabled"
     expect(enterButton.props.accessibilityState.disabled).toBe(true);
   });
 
-  it('deve habilitar o botão "Entrar" quando os campos estão preenchidos', () => {
-    const { getByPlaceholderText, getByTestId } = render(
+  it('Deve habilitar o botão "Entrar" quando os campos estão preenchidos', async () => {
+    const { getByTestId } = render(
       <NavigationContainer>
         <Login />
       </NavigationContainer>
     );
 
-    const userInput = getByPlaceholderText("Usuário");
-    const passwordInput = getByPlaceholderText("Senha");
+    const userInput = getByTestId("input-user");
+    const passwordInput = getByTestId("input-password");
     const enterButton = getByTestId("enter-button");
 
-    fireEvent.changeText(userInput, "user");
-    fireEvent.changeText(passwordInput, "123");
+    await act(async () => {
+      fireEvent.changeText(userInput, "user");
+      fireEvent.changeText(passwordInput, "123");
+    });
 
-    // Verifica o estado de acessibilidade "disabled"
     expect(enterButton.props.accessibilityState.disabled).toBe(false);
   });
 
-  it("deve exibir uma mensagem de erro quando o login falhar", async () => {
-    const { getByPlaceholderText, getByText } = render(
+  it("Deve exibir uma mensagem de erro quando o login falhar", async () => {
+    const { getByTestId, getByText } = render(
       <NavigationContainer>
         <Login />
       </NavigationContainer>
     );
 
-    const userInput = getByPlaceholderText("Usuário");
-    const passwordInput = getByPlaceholderText("Senha");
-    const enterButton = getByText("Entrar");
+    const userInput = getByTestId("input-user");
+    const passwordInput = getByTestId("input-password");
+    const enterButton = getByTestId("enter-button");
 
-    fireEvent.changeText(userInput, "wronguser");
-    fireEvent.changeText(passwordInput, "wrongpassword");
+    await act(async () => {
+      fireEvent.changeText(userInput, "wronguser");
+      fireEvent.changeText(passwordInput, "wrongpassword");
+    });
 
-    fireEvent.press(enterButton);
+    await act(async () => {
+      fireEvent.press(enterButton);
+    });
+
+    jest.runAllTimers();
 
     await waitFor(() => {
       expect(getByText("Usuário ou senha incorretos!")).toBeTruthy();
+    });
+  });
+
+  it('Deve exibir "Entrando..." no botão enquanto o login está sendo processado', async () => {
+    const { getByTestId, queryByText } = render(
+      <NavigationContainer>
+        <Login />
+      </NavigationContainer>
+    );
+
+    const userInput = getByTestId("input-user");
+    const passwordInput = getByTestId("input-password");
+    const enterButton = getByTestId("enter-button");
+
+    await act(async () => {
+      fireEvent.changeText(userInput, "user");
+      fireEvent.changeText(passwordInput, "123");
+    });
+
+    await act(async () => {
+      fireEvent.press(enterButton);
+    });
+
+    await waitFor(() => {
+      expect(queryByText("Entrando...")).toBeTruthy();
+    });
+
+    jest.runAllTimers();
+
+    await waitFor(() => {
+      expect(queryByText("Entrar")).toBeTruthy();
     });
   });
 });

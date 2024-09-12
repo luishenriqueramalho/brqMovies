@@ -76,7 +76,6 @@ const MovieDetail: React.FC = () => {
       setRemoveFavoriteMovie(true);
       setTimeout(() => {
         setRemoveFavoriteMovie(false);
-        navigation.goBack();
       }, 2000);
     } else {
       favoriteStore.addFavorite(place);
