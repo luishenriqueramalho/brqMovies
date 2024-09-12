@@ -9,17 +9,23 @@ export class MoviesStore {
 
   constructor() {
     makeObservable(this, {
-      movies: observable,
       isLoading: observable,
     });
   }
+
+  /**
+   * Método para buscar filmes populares na API.
+   * Atualizar o estado do carregamento e tratar o armazenamento da resposta.
+   *
+   * @returns {Promise<MoviesResponse ? undefined>}
+   */
 
   async getMovies() {
     this.isLoading = true;
     this.isError = undefined;
 
     try {
-      const response = await apiCall.MoviesRoute.getMovies();
+      const response = await apiCall.getPopularMovies();
       runInAction(() => {
         this.movies = response;
       });
