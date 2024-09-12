@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { SafeAreaView, TouchableOpacity } from "react-native";
+import { Alert, SafeAreaView, TouchableOpacity } from "react-native";
 import {
   Container,
   Left,
@@ -29,7 +29,22 @@ const NavigationBar: React.FC<NavigationBarProps> = ({ isBack }) => {
 
   const handleLogout = () => {
     setMenuVisible(false);
-    navigation.navigate("Login");
+    Alert.alert(
+      "Você está preste a sair",
+      "Tem certeza que deseja sair?",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => setMenuVisible(false),
+          style: "cancel",
+        },
+        {
+          text: "Ok",
+          onPress: () => navigation.navigate("Login"),
+        },
+      ],
+      { cancelable: false }
+    );
   };
 
   return (
