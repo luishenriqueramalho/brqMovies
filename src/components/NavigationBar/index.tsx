@@ -11,7 +11,8 @@ import {
   TitleMenu,
 } from "./styles";
 import { CloseAppIcon, PointMenuIcon } from "@/assets/svgs";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "@/navigators/types";
 
 interface NavigationBarProps {
   isBack?: boolean;
@@ -19,7 +20,7 @@ interface NavigationBarProps {
 }
 
 const NavigationBar: React.FC<NavigationBarProps> = ({ isBack }) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [isMenuVisible, setMenuVisible] = useState(false);
 
   const toggleMenu = () => {

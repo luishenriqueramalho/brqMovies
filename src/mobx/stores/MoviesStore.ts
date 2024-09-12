@@ -3,7 +3,7 @@ import { makeObservable, observable, runInAction } from "mobx";
 import MoviesResponse from "../types/MoviesTypes";
 
 export class MoviesStore {
-  movies: MoviesResponse[] = [];
+  movies: MoviesResponse | undefined = undefined;
   isLoading = false;
   isError = undefined;
 

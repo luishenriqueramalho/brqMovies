@@ -28,23 +28,33 @@ import {
   LikeIcon,
   NotificationIcon,
 } from "@/assets/svgs";
-import { useNavigation } from "@react-navigation/native";
+import {
+  NavigationProp,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { useStore } from "@/mobx";
 import AlertFavorite from "@/components/AlertFavorite";
+import { RootStackParamList } from "@/navigators/types";
 
-const MovieDetail: React.FC = ({ route }) => {
-  const navigation = useNavigation();
+type MovieDetailScreen = RouteProp<RootStackParamList, "MovieDetail">;
+
+const MovieDetail: React.FC = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const route = useRoute<MovieDetailScreen>();
   const { favoriteStore } = useStore();
-  const movie = route.params;
+  const URL_IMG = process.env.URL_IMG;
+  const { place } = route.params;
   const [navbarBackground, setNavbarBackground] = useState("transparent");
   const [favoriteMovie, setFavoriteMovie] = useState(false);
   const [addFavoriteMovie, setAddFavoriteMovie] = useState(false);
   const [removeFavoriteMovie, setRemoveFavoriteMovie] = useState(false);
 
   useEffect(() => {
-    const isFavorite = favoriteStore.isFavorite(movie);
+    const isFavorite = favoriteStore.isFavorite(place);
     setFavoriteMovie(isFavorite);
-  }, [favoriteStore, movie]);
+  }, [favoriteStore, place]);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
@@ -62,14 +72,14 @@ const MovieDetail: React.FC = ({ route }) => {
 
   const handleAddFavorite = () => {
     if (favoriteMovie) {
-      favoriteStore.removeFavorite(movie);
+      favoriteStore.removeFavorite(place);
       setRemoveFavoriteMovie(true);
       setTimeout(() => {
         setRemoveFavoriteMovie(false);
         navigation.goBack();
       }, 2000);
     } else {
-      favoriteStore.addFavorite(movie);
+      favoriteStore.addFavorite(place);
       setAddFavoriteMovie(true);
       setTimeout(() => {
         setAddFavoriteMovie(false);
@@ -94,26 +104,26 @@ const MovieDetail: React.FC = ({ route }) => {
           <Scroll onScroll={handleScroll} scrollEventThrottle={16}>
             <PhotoMovie
               source={{
-                uri: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+                uri: `${URL_IMG}${place.poster_path}`,
               }}
             />
-            <NameMovie>{movie.original_title}</NameMovie>
+            <NameMovie>{place.original_title}</NameMovie>
             <Sinopse>SINOPSE</Sinopse>
-            <Description>{movie.overview}</Description>
+            <Description>{place.overview}</Description>
             <Row>
               <Card>
                 <RowCard>
                   <LikeIcon />
                   <Title>Popularidade</Title>
                 </RowCard>
-                <SubTitle>{movie.popularity}</SubTitle>
+                <SubTitle>{place.popularity}</SubTitle>
               </Card>
               <Card>
                 <RowCard>
                   <FavoriteIcon />
                   <Title>Votação</Title>
                 </RowCard>
-                <SubTitle>{movie.vote_average}</SubTitle>
+                <SubTitle>{place.vote_average}</SubTitle>
               </Card>
             </Row>
             <Row>
@@ -122,14 +132,14 @@ const MovieDetail: React.FC = ({ route }) => {
                   <CalendarIcon />
                   <Title>Postagem</Title>
                 </RowCard>
-                <SubTitle>{formatDate(movie.release_date)}</SubTitle>
+                <SubTitle>{formatDate(place.release_date)}</SubTitle>
               </Card>
               <Card>
                 <RowCard>
                   <NotificationIcon />
                   <Title>Contagem Votos</Title>
                 </RowCard>
-                <SubTitle>{movie.vote_count}</SubTitle>
+                <SubTitle>{place.vote_count}</SubTitle>
               </Card>
             </Row>
           </Scroll>

@@ -10,10 +10,11 @@ import {
 import { Scroll } from "@/utils/global";
 import { useStore } from "@/mobx";
 import { Observer } from "mobx-react-lite";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "@/navigators/types";
 
 const Favorites: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { favoriteStore } = useStore();
   const URL_IMG = process.env.URL_IMG;
 

@@ -10,6 +10,7 @@ module.exports = {
   ],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
+    "^react-dom$": "<rootDir>/__mocks__/react-dom.js",
   },
   testPathIgnorePatterns: ["/node_modules/", "/android/", "/ios/"],
 };

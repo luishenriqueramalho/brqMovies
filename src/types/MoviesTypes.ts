@@ -1,4 +1,4 @@
-export default interface FavoriteResponse {
+export interface Movie {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -13,4 +13,11 @@ export default interface FavoriteResponse {
   video: boolean;
   vote_average: number;
   vote_count: number;
+}
+
+export interface MoviesResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
 }

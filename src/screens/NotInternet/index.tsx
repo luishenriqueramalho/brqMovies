@@ -3,12 +3,13 @@ import { Container } from "./styles";
 import { NoSignalIcon } from "@/assets/svgs";
 import Button from "@/components/Button";
 import { SafeAreaView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 import NetInfo from "@react-native-community/netinfo";
+import { RootStackParamList } from "@/navigators/types";
 
 const NotInternet: React.FC = () => {
   const [isChecking, setIsChecking] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const checkConnection = async () => {
     setIsChecking(true);
