@@ -6,7 +6,7 @@ BRQMovies é um aplicativo de visualização de filmes que permite aos usuários
 
 Aqui está um vídeo de 48 segundos mostrando o funcionamento do aplicativo:
 
-[![BRQMovies App Demo](assets/prints/splash.jpeg)](assets/gifMovie.mp4)
+[![BRQMovies App Demo]](assets/gifMovie.mp4)
 
 ## 📱 Screenshots
 
