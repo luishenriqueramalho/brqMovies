@@ -112,4 +112,4 @@ yarn start --reset-cache
 
 ### 5. Download do APK:
 
-- [APK Android](https://expo.dev/accounts/luishenriqueramalho/projects/brqMovies/builds/d477fcba-6084-4410-9977-19a55a0ac391)
+- [APK Android](https://drive.google.com/file/d/1jfLS6xr7iLpq4GVOEIyO0yhJBNI1S8K8/view?usp=sharing)
