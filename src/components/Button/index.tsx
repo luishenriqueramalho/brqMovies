@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import { Click, Title } from "./styles";
-import { ActivityIndicator } from "react-native";
-import { Colors } from "@/utils/colors";
+import { ButtonProps } from "./button-types";
+import { ButtonLoader } from "./button-loader";
 
-interface ButtonProps {
-  onPress?: () => void;
-  title: string;
-  disabled?: boolean;
-}
-
+/**
+ *
+ * @param {ButtonProps} props
+ * @returns {JSX.Element}
+ */
 const Button: React.FC<ButtonProps> = ({ onPress, title, disabled }) => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handlePress = async () => {
+  /**
+   * @returns {Promise<void>}
+   */
+  const handlePress = async (): Promise<void> => {
     if (onPress) {
       setIsLoading(true);
       await onPress();
@@ -27,11 +29,8 @@ const Button: React.FC<ButtonProps> = ({ onPress, title, disabled }) => {
       testID="enter-button"
       accessibilityState={{ disabled: disabled || isLoading }}
     >
-      {isLoading ? (
-        <ActivityIndicator size="small" color={Colors.white} />
-      ) : (
-        <Title disabled={disabled}>{title}</Title>
-      )}
+      <ButtonLoader isLoading={isLoading} />
+      {!isLoading && <Title disabled={disabled}>{title}</Title>}
     </Click>
   );
 };

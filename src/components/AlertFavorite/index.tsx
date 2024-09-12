@@ -2,11 +2,13 @@ import React from "react";
 import { ModalFavorite, TitleAddFavorite } from "./styles";
 import { RemoveIcon, VerifyIcon } from "@/assets/svgs";
 import { SafeAreaView } from "react-native";
+import { AlertFavoriteProps } from "./alertFavorite-types";
 
-interface AlertFavoriteProps {
-  isRemove?: boolean;
-}
-
+/**
+ *
+ * @param {AlertFavoriteProps}
+ * @returns {JSX.Element}
+ */
 const AlertFavorite: React.FC<AlertFavoriteProps> = ({ isRemove }) => {
   return (
     <>
