@@ -2,39 +2,41 @@
 
 BRQMovies é um aplicativo de visualização de filmes que permite aos usuários explorar os filmes mais populares, adicionar filmes aos favoritos, visualizar detalhes, e navegar por diferentes categorias. O aplicativo é desenvolvido utilizando **React Native** e **Expo** e consome a API **The Movie DB** para buscar informações sobre filmes.
 
+## 🎥 Demonstração
+
+Aqui está um vídeo de 48 segundos mostrando o funcionamento do aplicativo:
+
+[![BRQMovies App Demo](assets/video-thumbnail.png)](assets/brqmovies-demo.mp4)
+
 ## 📱 Screenshots
 
-### 1. Tela de Login
+### 1. Tela de Login e Tela de Login com Erro
 
-<img src="assets/prints/login.jpeg" width="250"/>
+<div>
+  <img src="assets/prints/login.jpeg" width="200"/>
+  <img src="assets/prints/login-error.jpeg" width="200"/>
+</div>
 
-### 2. Tela de Login com erro
+### 2. Tela Home e Tela Favoritos com Filmes
 
-<img src="assets/prints/login-error.jpeg" width="250"/>
+<div>
+  <img src="assets/prints/home.jpeg" width="200"/>
+  <img src="assets/prints/favorite-movies.jpeg" width="200"/>
+</div>
 
-### 3. Tela Home
+### 3. Tela Detalhes do Filme e Tela Favoritos Vazio
 
-<img src="assets/prints/home.jpeg" width="250"/>
+<div>
+  <img src="assets/prints/movie-detail.jpeg" width="200"/>
+  <img src="assets/prints/favorite-clean.jpeg" width="200"/>
+</div>
 
-### 4. Tela Favoritos com filmes
+### 4. Tela Home com Menu Clicado e Tela de Splash
 
-<img src="assets/prints/favorite-movies.jpeg" width="250"/>
-
-### 5. Tela Detalhes do Filme
-
-<img src="assets/prints/movie-detail.jpeg" width="250"/>
-
-### 6. Tela Favoritos Vazio
-
-<img src="assets/prints/favorite-clean.jpeg" width="250"/>
-
-### 7. Tela Home com Menu Clicado
-
-<img src="assets/prints/home-menu.jpeg" width="250"/>
-
-### 8. Tela de Splash
-
-<img src="assets/prints/splash.jpeg" width="250"/>
+<div>
+  <img src="assets/prints/home-menu.jpeg" width="200"/>
+  <img src="assets/prints/splash.jpeg" width="200"/>
+</div>
 
 ## 🚀 Tecnologias Usadas
 
