@@ -8,7 +8,13 @@ export const ButtonLoader = ({
   isLoading: boolean;
 }): JSX.Element | null => {
   if (isLoading) {
-    return <ActivityIndicator size="small" color={Colors.white} />;
+    return (
+      <ActivityIndicator
+        testID="activity-indicator"
+        size="small"
+        color={Colors.white}
+      />
+    );
   }
   return null;
 };
