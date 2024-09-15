@@ -66,7 +66,9 @@ describe("Login Screen", () => {
       fireEvent.press(enterButton);
     });
 
-    jest.runAllTimers();
+    await act(async () => {
+      jest.runAllTimers();
+    });
 
     await waitFor(() => {
       expect(getByText("Usuário ou senha incorretos!")).toBeTruthy();
@@ -97,7 +99,9 @@ describe("Login Screen", () => {
       expect(queryByText("Entrando...")).toBeTruthy();
     });
 
-    jest.runAllTimers();
+    await act(async () => {
+      jest.runAllTimers();
+    });
 
     await waitFor(() => {
       expect(queryByText("Entrar")).toBeTruthy();

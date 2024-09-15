@@ -17,7 +17,9 @@ describe("Button Component", () => {
   });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers();
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
     jest.useRealTimers();
   });
 
@@ -82,7 +84,7 @@ describe("Button Component", () => {
     });
   });
 
-  it("Não deve chamar onPress quando desativado", () => {
+  it("Não deve chamar onPress quando desativado", async () => {
     const mockPress = jest.fn();
     const { getByTestId } = render(
       <NavigationContainer>
@@ -92,7 +94,9 @@ describe("Button Component", () => {
 
     const button = getByTestId("enter-button");
 
-    fireEvent.press(button);
+    await act(async () => {
+      fireEvent.press(button);
+    });
 
     expect(mockPress).not.toHaveBeenCalled();
   });
